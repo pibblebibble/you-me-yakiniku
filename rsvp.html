@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RSVP · Jon &amp; Viv: We Ball</title>
+  <meta name="description" content="Kindly tell Jon &amp; Viv if you're in for the wedding on 3 October 2026." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Patrick+Hand&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 26C12 22 6 18 6 12C6 9 8.5 7 11.5 7C13.5 7 15 8 16 9.5C17 8 18.5 7 20.5 7C23.5 7 26 9 26 12C26 18 20 22 16 26Z' fill='%23224da5'/%3E%3C/svg%3E" />
+</head>
+<body>
+
+  <!-- Decorative scatter — sits behind everything, frames the form -->
+  <div class="page-doodles" aria-hidden="true">
+    <!-- TOP region -->
+    <div class="page-doodle" style="top: 90px; left: 2%; width: 70px;">
+      <div class="anim-scribble-bob"><img src="img/scribble-1.svg" alt="" /></div>
+    </div>
+    <div class="page-doodle" style="top: 70px; right: 3%; width: 80px;">
+      <div class="anim-spin"><img src="img/flower.svg" alt="" /></div>
+    </div>
+    <div class="page-doodle hide-on-tablet" style="top: 240px; left: 6%; width: 50px; transform: rotate(20deg);">
+      <img src="img/scribble-2.svg" alt="" />
+    </div>
+    <div class="page-doodle hide-on-tablet" style="top: 260px; right: 8%; width: 60px; transform: rotate(-30deg);">
+      <img src="img/flower.svg" alt="" />
+    </div>
+
+    <!-- MIDDLE region — wide-margin accents flanking the form (desktop only) -->
+    <div class="page-doodle hide-on-tablet" style="top: 540px; left: 1%; width: 130px;">
+      <div class="anim-sway"><img src="img/bouquet.svg" alt="" /></div>
+    </div>
+    <div class="page-doodle hide-on-tablet" style="top: 520px; right: 1%; width: 130px;">
+      <div class="anim-sway anim-sway-reverse"><img src="img/bouquet.svg" alt="" style="transform: scaleX(-1);" /></div>
+    </div>
+    <div class="page-doodle hide-on-tablet" style="top: 880px; left: 3%; width: 80px;">
+      <div class="anim-spin"><img src="img/flower.svg" alt="" /></div>
+    </div>
+    <div class="page-doodle hide-on-tablet" style="top: 920px; right: 3%; width: 60px; transform: rotate(15deg);">
+      <img src="img/scribble-1.svg" alt="" />
+    </div>
+
+    <!-- LOWER region -->
+    <div class="page-doodle hide-on-tablet" style="top: 1280px; left: 2%; width: 70px; transform: rotate(-12deg);">
+      <img src="img/drink.svg" alt="" />
+    </div>
+    <div class="page-doodle hide-on-tablet" style="top: 1320px; right: 4%; width: 90px;">
+      <img src="img/beef.svg" alt="" />
+    </div>
+
+    <!-- BOTTOM corners -->
+    <div class="page-doodle" style="bottom: 110px; left: 1%; width: 130px;">
+      <div class="anim-sway"><img src="img/bouquet.svg" alt="" /></div>
+    </div>
+    <div class="page-doodle" style="bottom: 110px; right: 1%; width: 130px;">
+      <div class="anim-sway anim-sway-reverse"><img src="img/bouquet.svg" alt="" style="transform: scaleX(-1);" /></div>
+    </div>
+
+    <!-- Goose peeking from the bottom centre — above the footer line -->
+    <div class="page-doodle goose-peek wiggle" style="bottom: 110px; left: 50%; transform: translateX(-50%); width: 64px;">
+      <img src="img/goose-king.png" alt="" />
+    </div>
+  </div>
+
+  <nav class="site-nav">
+    <a href="index.html" class="nav-brand">Jon &amp; Viv</a>
+    <a href="index.html" class="nav-back">Back</a>
+  </nav>
+
+  <header class="page-head">
+    <p class="eyebrow fade-in" style="--delay: 100ms">Saturday 3 October 2026</p>
+    <h1 class="fade-in rsvp-title" style="--delay: 200ms;">
+      Will You Be Attending Our Wedding and Meat Agenda?
+    </h1>
+    <p class="lede fade-in" style="--delay: 400ms; max-width: 620px; margin: var(--space-4) auto 0;">
+      There will be vows, refreshments, dinner, and hopefully no one causing a scene. Please RSVP below.
+    </p>
+  </header>
+
+  <!--
+    =====================================================
+    FORMSPREE SETUP — for this form you'll need a NEW endpoint
+    (separate from the family wedding form):
+      1. https://formspree.io/ → New form → name it "We Ball RSVP"
+      2. Copy the endpoint (e.g. https://formspree.io/f/abcd1234)
+      3. Paste it into <form action="..."> below replacing the placeholder
+      4. In Formspree settings, disable reCAPTCHA for the AJAX path
+    =====================================================
+  -->
+  <section class="form-wrap fade-in" style="--delay: 500ms;">
+    <div class="container container-narrow">
+      <form
+        class="form-grid"
+        data-rsvp-form
+        action="https://formspree.io/f/REPLACE_WITH_YOUR_WEBALL_FORMSPREE_ID"
+        method="POST"
+        novalidate>
+
+        <input type="hidden" name="_subject" value="We Ball RSVP" />
+
+        <!-- Name (First + Last) -->
+        <div class="field" data-field="full_name">
+          <label class="field-label" for="full-name">
+            Name <span class="req">*</span>
+          </label>
+          <div class="field-row">
+            <input
+              id="full-name"
+              class="field-input"
+              type="text"
+              name="first_name"
+              autocomplete="given-name"
+              placeholder="First name"
+              required />
+            <input
+              class="field-input"
+              type="text"
+              name="last_name"
+              autocomplete="family-name"
+              placeholder="Last name"
+              required />
+          </div>
+          <span class="field-error" data-error-for="full_name"></span>
+        </div>
+
+        <!-- Attendance Confirmation -->
+        <div class="field" data-field="attendance">
+          <span class="field-label">Attendance Confirmation <span class="req">*</span></span>
+          <div class="choice-group" role="radiogroup" aria-label="Attendance">
+            <div class="choice">
+              <input type="radio" id="att-yes" name="attendance" value="Yes, gladly" required />
+              <label for="att-yes">Yes, gladly</label>
+            </div>
+            <div class="choice">
+              <input type="radio" id="att-no" name="attendance" value="No, tragically" />
+              <label for="att-no">No, tragically</label>
+            </div>
+          </div>
+          <span class="field-error" data-error-for="attendance"></span>
+        </div>
+
+        <!-- Side Selection -->
+        <div class="field field-attending" data-field="side">
+          <span class="field-label">Side Selection <span class="req">*</span></span>
+          <div class="choice-group" role="radiogroup" aria-label="Side">
+            <div class="choice">
+              <input type="radio" id="side-viv" name="side" value="Bride's side (Viv)" required />
+              <label for="side-viv">Bride's side <small style="display:block;">[Viv]</small></label>
+            </div>
+            <div class="choice">
+              <input type="radio" id="side-jon" name="side" value="Groom's side (Jon)" />
+              <label for="side-jon">Groom's side <small style="display:block;">[Jon]</small></label>
+            </div>
+          </div>
+          <span class="field-error" data-error-for="side"></span>
+        </div>
+
+        <!-- Event Participation -->
+        <div class="field field-attending" data-field="participation">
+          <span class="field-label">Event Participation <span class="req">*</span></span>
+          <div class="choice-group choice-group-3" role="radiogroup" aria-label="Participation">
+            <div class="choice">
+              <input type="radio" id="part-reception" name="participation" value="Reception only" required />
+              <label for="part-reception">Reception only</label>
+            </div>
+            <div class="choice">
+              <input type="radio" id="part-dinner" name="participation" value="Dinner only" />
+              <label for="part-dinner">Dinner only</label>
+            </div>
+            <div class="choice">
+              <input type="radio" id="part-both" name="participation" value="Both" />
+              <label for="part-both">Both <small style="display:block;">[Popular Option 🍿]</small></label>
+            </div>
+          </div>
+          <span class="field-error" data-error-for="participation"></span>
+        </div>
+
+        <!-- Plus One -->
+        <div class="field field-attending" data-field="plus_one">
+          <span class="field-label">Plus One <span class="req">*</span></span>
+          <div class="choice-group" role="radiogroup" aria-label="Plus One">
+            <div class="choice">
+              <input type="radio" id="po-no" name="plus_one" value="No, just me" required />
+              <label for="po-no">No, just me</label>
+            </div>
+            <div class="choice">
+              <input type="radio" id="po-yes" name="plus_one" value="Yes" />
+              <label for="po-yes">Yes</label>
+            </div>
+          </div>
+          <span class="field-error" data-error-for="plus_one"></span>
+
+          <!-- Conditional: Plus One Name -->
+          <div class="field-conditional" data-conditional="plus-one-name">
+            <div class="field-conditional-inner">
+              <label class="field-label" for="plus-one-name">Plus One Name</label>
+              <input
+                id="plus-one-name"
+                class="field-input"
+                type="text"
+                name="plus_one_name"
+                placeholder="Their full name" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Dietary Restrictions -->
+        <div class="field field-attending">
+          <label class="field-label" for="diet">Dietary Restrictions</label>
+          <input
+            id="diet"
+            class="field-input"
+            type="text"
+            name="dietary"
+            placeholder="e.g. vegetarian, nut allergy, halal" />
+        </div>
+
+        <!-- Additional Information -->
+        <div class="field field-attending">
+          <label class="field-label" for="additional">Additional Information</label>
+          <p class="field-hint">For example: accessibility needs, arrival timing, or anything that may affect your attendance</p>
+          <textarea
+            id="additional"
+            class="field-textarea"
+            name="additional_info"
+            rows="3"
+            placeholder="(optional)"></textarea>
+        </div>
+
+        <!-- Phone Number -->
+        <div class="field" data-field="phone">
+          <label class="field-label" for="phone">Phone Number <span class="req">*</span></label>
+          <p class="field-hint">Please enter a valid phone number.</p>
+          <input
+            id="phone"
+            class="field-input"
+            type="tel"
+            name="phone"
+            autocomplete="tel"
+            inputmode="tel"
+            placeholder="+60 12 345 6789"
+            required />
+          <span class="field-error" data-error-for="phone"></span>
+        </div>
+
+        <!-- Email -->
+        <div class="field" data-field="email">
+          <label class="field-label" for="email">Email <span class="req">*</span></label>
+          <input
+            id="email"
+            class="field-input"
+            type="email"
+            name="email"
+            autocomplete="email"
+            placeholder="example@example.com"
+            required />
+          <span class="field-error" data-error-for="email"></span>
+        </div>
+
+        <!-- Messages -->
+        <div class="field">
+          <label class="field-label" for="message">Messages</label>
+          <p class="field-hint">Any blessings, threats, or emotional support messages for the bride and groom?</p>
+          <textarea
+            id="message"
+            class="field-textarea"
+            name="message"
+            rows="4"
+            placeholder="(optional)"></textarea>
+        </div>
+
+        <div class="form-submit">
+          <button type="submit" class="btn">Send RSVP</button>
+        </div>
+
+        <p class="form-status" data-form-status role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    With love · Jon &amp; Viv
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

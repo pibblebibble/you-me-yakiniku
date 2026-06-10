@@ -1,0 +1,986 @@
+/* ============================================
+   Jon & Viv: We Ball
+   Design system: bold blue, chunky doodly
+   ============================================ */
+
+:root {
+  /* Colour — Bold blue on white */
+  --blue: #224da5;
+  --blue-dark: #1a3d85;
+  --blue-light: #4d75c7;
+  --blue-soft: #eaf0fb;
+  --blue-tint: #f5f8fd;
+  --white: #FFFFFF;
+  --cream: #FFFCF5;
+  --ink: #0d1c3d;
+  --ink-soft: #4a5a7a;
+  --line: #c5d3ed;
+
+  /* Type */
+  --font-display: "Chewy", "Comic Sans MS", cursive;
+  --font-accent: "Patrick Hand", "Comic Sans MS", cursive;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  /* Spacing — 8px grid */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem;
+  --space-6: 3rem;
+  --space-7: 4rem;
+  --space-8: 6rem;
+  --space-9: 8rem;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast: 200ms;
+  --dur-med: 400ms;
+  --dur-slow: 800ms;
+
+  /* Layout */
+  --container: 1140px;
+  --container-narrow: 760px;
+  --radius-pill: 999px;
+}
+
+/* ============================================
+   Base
+   ============================================ */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--white);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+img, svg { display: block; max-width: 100%; }
+
+a { color: inherit; text-decoration: none; }
+
+button { font-family: inherit; cursor: pointer; }
+
+/* ============================================
+   Typography
+   ============================================ */
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: 0;
+  margin: 0;
+  color: var(--blue);
+  line-height: 1.05;
+}
+
+.display-xxl { font-size: clamp(3rem, 9vw, 7rem); line-height: 0.95; }
+.display-xl  { font-size: clamp(2.5rem, 7vw, 5.5rem); line-height: 1; }
+.display-l   { font-size: clamp(2rem, 5vw, 4rem); line-height: 1.05; }
+.display-m   { font-size: clamp(1.75rem, 3.5vw, 2.75rem); line-height: 1.1; }
+
+h2 { font-size: clamp(2rem, 5vw, 3.5rem); }
+h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
+
+p { margin: 0 0 1em; }
+p:last-child { margin-bottom: 0; }
+
+.handwritten {
+  font-family: var(--font-accent);
+  font-weight: 400;
+}
+
+.lede {
+  font-family: var(--font-accent);
+  font-size: clamp(1.25rem, 2vw, 1.625rem);
+  color: var(--blue);
+  line-height: 1.4;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-accent);
+  font-size: 1.125rem;
+  color: var(--blue);
+}
+
+/* ============================================
+   Layout
+   ============================================ */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
+.container-narrow {
+  max-width: var(--container-narrow);
+}
+
+.section {
+  padding: var(--space-7) 0;
+}
+.section-tight { padding: var(--space-6) 0; }
+
+/* ============================================
+   Site chrome
+   ============================================ */
+.site-nav {
+  position: relative;
+  z-index: 10;
+  padding: var(--space-3) var(--space-4);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-brand {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--blue);
+  letter-spacing: 0.02em;
+}
+.nav-back {
+  font-family: var(--font-accent);
+  font-size: 1.125rem;
+  color: var(--blue);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  transition: transform var(--dur-fast) var(--ease-bounce);
+}
+.nav-back:hover { transform: translateX(-4px); }
+.nav-back::before {
+  content: "←";
+  font-size: 1.25rem;
+}
+
+.site-footer {
+  border-top: 3px solid var(--blue);
+  padding: var(--space-5) 0;
+  text-align: center;
+  font-family: var(--font-accent);
+  font-size: 1.125rem;
+  color: var(--blue);
+}
+
+/* ============================================
+   Buttons (chunky pill style)
+   ============================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: 1rem 2.25rem;
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  border: 3px solid var(--blue);
+  background: var(--blue);
+  color: var(--white);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: transform var(--dur-fast) var(--ease-bounce),
+              box-shadow var(--dur-fast) var(--ease-soft),
+              background var(--dur-fast) var(--ease-soft);
+  box-shadow: 0 4px 0 var(--blue-dark);
+  position: relative;
+  text-decoration: none;
+}
+.btn:hover {
+  transform: translateY(-2px) rotate(-1deg);
+  box-shadow: 0 6px 0 var(--blue-dark);
+}
+.btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 var(--blue-dark);
+}
+.btn:focus-visible {
+  outline: 3px dashed var(--blue);
+  outline-offset: 4px;
+}
+
+.btn-outline {
+  background: var(--white);
+  color: var(--blue);
+  box-shadow: 0 4px 0 var(--blue);
+}
+.btn-outline:hover {
+  background: var(--blue-soft);
+  box-shadow: 0 6px 0 var(--blue);
+}
+
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  justify-content: center;
+  margin-top: var(--space-5);
+}
+
+/* ============================================
+   Pills (date/time badges)
+   ============================================ */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1.25rem;
+  border: 2.5px solid var(--blue);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-accent);
+  font-size: 1.125rem;
+  color: var(--blue);
+  background: var(--white);
+  white-space: nowrap;
+}
+
+/* ============================================
+   Hero (Welcome page)
+   ============================================ */
+.hero {
+  position: relative;
+  min-height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-5) var(--space-4) var(--space-7);
+  overflow: hidden;
+}
+
+.hero-pills {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto var(--space-4);
+  gap: var(--space-3);
+}
+.hero-pill-left  { transform: rotate(-3deg); }
+.hero-pill-right { transform: rotate(3deg); }
+
+/* Big chunky heart with text inside */
+.hero-heart {
+  position: relative;
+  width: 100%;
+  max-width: 340px;
+  aspect-ratio: 1 / 0.95;
+  margin: 0 auto;
+}
+.hero-heart svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.hero-heart-text {
+  position: absolute;
+  inset: 18% 14% 22%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 3vw, 2rem);
+  color: var(--blue);
+  line-height: 1.1;
+  pointer-events: none;
+}
+
+/* Couple silhouette area below heart (placeholder) */
+.hero-couple {
+  width: 100%;
+  max-width: 220px;
+  margin: -6% auto 0;
+  position: relative;
+  aspect-ratio: 1 / 0.9;
+}
+.hero-couple svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Jon / Viv name labels (uses SVG images) flanking a tiny scribble */
+.hero-names {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 480px;
+  margin: var(--space-4) auto 0;
+  padding: 0 var(--space-3);
+  gap: var(--space-3);
+}
+.hero-names img { display: block; }
+
+/* Floral / doodle corners */
+.hero-doodle {
+  position: absolute;
+  color: var(--blue);
+  opacity: 0.9;
+  pointer-events: none;
+}
+.hero-doodle-tl { top: 5%;  left: 2%;  width: clamp(80px, 14vw, 180px); }
+.hero-doodle-tr { top: 6%;  right: 2%; width: clamp(60px, 10vw, 140px); }
+.hero-doodle-bl { bottom: 6%; left: 2%;  width: clamp(80px, 14vw, 180px); }
+.hero-doodle-br { bottom: 6%; right: 2%; width: clamp(80px, 14vw, 180px); }
+
+/* Hero CTA */
+.hero-cta {
+  margin-top: var(--space-4);
+  position: relative;
+  z-index: 5;
+}
+
+/* ============================================
+   Page header (subpages)
+   ============================================ */
+.page-head {
+  text-align: center;
+  padding: var(--space-6) var(--space-4) var(--space-5);
+  position: relative;
+}
+.page-head h1 {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  color: var(--blue);
+  margin-bottom: var(--space-3);
+}
+.page-head .eyebrow {
+  margin-bottom: var(--space-2);
+}
+
+/* ============================================
+   Details page — two-panel schedule + location
+   ============================================ */
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 4px solid var(--blue);
+  border-radius: 24px;
+  overflow: hidden;
+  position: relative;
+  background: var(--white);
+}
+@media (max-width: 768px) {
+  .split { grid-template-columns: 1fr; }
+}
+
+.split-panel {
+  padding: var(--space-6) var(--space-5);
+  position: relative;
+  min-height: 540px;
+}
+.split-panel-light {
+  background: var(--white);
+  color: var(--blue);
+}
+.split-panel-dark {
+  background: var(--blue);
+  color: var(--white);
+}
+.split-panel h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  margin-bottom: var(--space-5);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+.split-panel-light h2 { color: var(--blue); }
+.split-panel-dark h2  { color: var(--white); }
+
+.split-panel-doodle {
+  position: absolute;
+  opacity: 0.95;
+  pointer-events: none;
+}
+
+/* Tints a blue-filled SVG white so it reads on a blue background */
+.white-filter {
+  filter: brightness(0) invert(1);
+}
+
+/* Inline icon next to a label (e.g. drink next to "Reception") */
+.inline-icon {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  vertical-align: -4px;
+  margin-right: 6px;
+}
+
+/* Schedule timeline */
+.schedule {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.schedule-row {
+  display: grid;
+  grid-template-columns: 84px 1fr;
+  gap: var(--space-3);
+  align-items: baseline;
+}
+.schedule-time {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--blue);
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+.schedule-time small {
+  font-family: var(--font-accent);
+  font-size: 0.875rem;
+  color: var(--blue);
+}
+.schedule-line {
+  border-bottom: 2px solid var(--blue);
+  padding-bottom: 2px;
+  font-family: var(--font-accent);
+  font-size: 1.0625rem;
+  color: var(--blue);
+  min-height: 1.8em;
+}
+.schedule-line:empty::after {
+  content: " ";
+}
+
+/* Location panel rows */
+.loc-row { margin-bottom: var(--space-4); }
+.loc-label {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--white);
+  letter-spacing: 0.02em;
+  margin-bottom: 4px;
+}
+.loc-value {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  color: var(--white);
+  line-height: 1.1;
+}
+
+.loc-note {
+  margin-top: var(--space-6);
+  padding-top: var(--space-3);
+}
+.loc-note-label {
+  font-family: var(--font-accent);
+  font-size: 1.25rem;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+.loc-note-body {
+  font-family: var(--font-accent);
+  font-size: 1.125rem;
+  color: var(--white);
+  line-height: 1.4;
+}
+
+/* Map link button */
+.map-cta {
+  margin-top: var(--space-5);
+  text-align: center;
+}
+
+/* RSVP page title — smaller + balanced wrap so "Agenda?" doesn't orphan */
+.rsvp-title {
+  font-size: clamp(1.875rem, 4.5vw, 2.875rem) !important;
+  line-height: 1.1 !important;
+  max-width: 720px;
+  margin: 0 auto;
+  text-wrap: balance;
+}
+
+/* ============================================
+   RSVP form (native, posts to Formspree)
+   ============================================ */
+.form-wrap {
+  padding: var(--space-3) 0 var(--space-7);
+}
+.form-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+}
+@media (max-width: 540px) {
+  .field-row { grid-template-columns: 1fr; }
+}
+
+.field-label {
+  font-family: var(--font-accent);
+  font-size: 1.25rem;
+  color: var(--blue);
+  font-weight: 400;
+}
+.field-label .req { color: var(--blue); }
+.field-hint {
+  font-family: var(--font-accent);
+  font-size: 1rem;
+  color: var(--ink-soft);
+  font-style: italic;
+  margin: 0;
+}
+
+.field-input,
+.field-textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2.5px solid var(--blue);
+  border-radius: 12px;
+  background: var(--white);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 400;
+  transition: border-color var(--dur-fast) var(--ease-soft),
+              box-shadow var(--dur-fast) var(--ease-soft);
+}
+.field-input:focus,
+.field-textarea:focus {
+  outline: none;
+  border-color: var(--blue-dark);
+  box-shadow: 0 0 0 3px rgba(34, 77, 165, 0.18);
+}
+.field-input::placeholder,
+.field-textarea::placeholder {
+  color: var(--ink-soft);
+  opacity: 0.5;
+}
+.field-textarea {
+  min-height: 90px;
+  resize: vertical;
+  font-family: var(--font-body);
+}
+
+/* Choice (radio) group — chunky chips */
+.choice-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2);
+}
+.choice-group-3 {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+@media (max-width: 540px) {
+  .choice-group,
+  .choice-group-3 { grid-template-columns: 1fr; }
+}
+.choice {
+  position: relative;
+}
+.choice input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.choice label {
+  display: block;
+  padding: 0.75rem 1rem;
+  border: 2.5px solid var(--blue);
+  border-radius: 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-soft),
+              color var(--dur-fast) var(--ease-soft),
+              transform var(--dur-fast) var(--ease-bounce);
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+  color: var(--blue);
+  background: var(--white);
+  line-height: 1.2;
+}
+.choice label small {
+  font-family: var(--font-accent);
+  font-size: 0.875rem;
+  font-weight: 400;
+  display: block;
+  margin-top: 2px;
+  opacity: 0.85;
+}
+.choice input:checked + label {
+  background: var(--blue);
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 0 var(--blue-dark);
+}
+.choice input:focus-visible + label {
+  outline: 3px dashed var(--blue);
+  outline-offset: 3px;
+}
+.choice label:hover {
+  background: var(--blue-soft);
+}
+.choice input:checked + label:hover {
+  background: var(--blue-dark);
+}
+
+/* Conditional field (plus-one name) */
+.field-conditional {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 500ms var(--ease-out),
+              opacity 320ms var(--ease-soft);
+}
+.field-conditional.is-open {
+  max-height: 160px;
+  opacity: 1;
+  transition: max-height 500ms var(--ease-out),
+              opacity 320ms var(--ease-soft) 100ms;
+}
+.field-conditional-inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding-top: var(--space-3);
+}
+
+/* Hide attending-only fields when "No, tragically" is selected */
+.form-grid[data-attendance="no"] .field-attending {
+  display: none;
+}
+
+/* Submit + status */
+.form-submit {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-3);
+}
+.form-status {
+  text-align: center;
+  margin-top: var(--space-2);
+  font-family: var(--font-accent);
+  font-size: 1.0625rem;
+  color: var(--blue);
+  min-height: 1.5em;
+}
+.form-status.is-error { color: #B85C50; }
+.form-status.is-info  { color: var(--ink-soft); }
+.btn[disabled] { opacity: 0.6; cursor: progress; }
+
+/* Validation errors */
+.field-error {
+  display: none;
+  font-family: var(--font-accent);
+  font-size: 1rem;
+  color: #B85C50;
+  margin-top: 4px;
+}
+.field.has-error .field-input,
+.field.has-error .field-textarea {
+  border-color: #B85C50;
+}
+.field.has-error .choice label {
+  border-color: #C77A6F;
+}
+.field.has-error .field-error {
+  display: block;
+}
+
+/* ============================================
+   Thank you page
+   ============================================ */
+.thanks {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-7) var(--space-4);
+  position: relative;
+  overflow: hidden;
+}
+.thanks-inner { max-width: 720px; position: relative; z-index: 2; }
+.thanks h1 {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  color: var(--blue);
+  margin-bottom: var(--space-3);
+}
+.thanks p {
+  font-family: var(--font-accent);
+  font-size: clamp(1.25rem, 2vw, 1.625rem);
+  color: var(--blue);
+  line-height: 1.4;
+}
+
+/* Confetti (re-used from family site pattern) */
+.confetti {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.confetti-piece {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 16px;
+  border-radius: 2px;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  animation: confetti-burst 2400ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: var(--d, 0ms);
+}
+@keyframes confetti-burst {
+  0%   { transform: translate(-50%, -50%) rotate(0) scale(0.2); opacity: 0; }
+  15%  { opacity: 1; }
+  100% { transform:
+           translate(calc(-50% + var(--x, 0px)),
+                     calc(-50% + var(--y, 0px)))
+           rotate(var(--r, 360deg))
+           scale(1);
+         opacity: 0; }
+}
+
+/* ============================================
+   Doodle accents (placeholder SVGs)
+   ============================================ */
+.doodle-asterisk {
+  display: inline-block;
+  color: var(--blue);
+}
+
+/* ============================================
+   Entrance animations
+   ============================================ */
+.fade-in {
+  opacity: 0;
+  transform: translateY(16px);
+  animation: fade-in 700ms var(--ease-out) forwards;
+  animation-delay: var(--delay, 0ms);
+}
+@keyframes fade-in {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.pop-in {
+  opacity: 0;
+  transform: scale(0.7) rotate(var(--rot, 0deg));
+  animation: pop-in 600ms var(--ease-bounce) forwards;
+  animation-delay: var(--delay, 0ms);
+}
+@keyframes pop-in {
+  to { opacity: 1; transform: scale(1) rotate(var(--rot, 0deg)); }
+}
+
+/* Wiggle on hover for fun elements */
+.wiggle:hover {
+  animation: wiggle 600ms var(--ease-bounce);
+}
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0); }
+  25%      { transform: rotate(-4deg); }
+  75%      { transform: rotate(4deg); }
+}
+
+/* ============================================
+   Page-level decorative scatter
+   ============================================ */
+body { position: relative; }
+
+.page-doodles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+.page-doodle {
+  position: absolute;
+  pointer-events: none;
+  display: block;
+}
+.page-doodle img { display: block; width: 100%; height: auto; }
+
+/* Ensure page content stays above the scatter */
+.site-nav, .page-head, .hero, .section, .form-wrap, .thanks, .site-footer,
+.split, .rsvp-frame-wrap {
+  position: relative;
+  z-index: 1;
+}
+
+/* Hide some doodles on small screens so they don't crowd the form */
+@media (max-width: 720px) {
+  .page-doodle.hide-on-mobile { display: none; }
+}
+@media (max-width: 1080px) {
+  .page-doodle.hide-on-tablet { display: none; }
+}
+/* Goose stays above the footer's blue line */
+.page-doodle.goose-peek { z-index: 3; }
+
+/* ============================================
+   Decorative animations — slow ambient motion
+   ============================================ */
+
+/* Slow continuous rotation (the corner flower) */
+.anim-spin {
+  display: block;
+  width: 100%;
+  animation: anim-spin 24s linear infinite;
+  transform-origin: center;
+}
+@keyframes anim-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Gentle sway, like a bouquet in a breeze */
+.anim-sway {
+  display: block;
+  width: 100%;
+  animation: anim-sway 5s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+.anim-sway-reverse { animation-direction: reverse; animation-duration: 6s; }
+@keyframes anim-sway {
+  0%, 100% { transform: rotate(-3.5deg); }
+  50%      { transform: rotate(3.5deg); }
+}
+
+/* Bobby scribble loop */
+.anim-scribble-bob {
+  display: block;
+  width: 100%;
+  animation: anim-scribble-bob 4s ease-in-out infinite;
+  transform-origin: center;
+}
+@keyframes anim-scribble-bob {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-8px) rotate(6deg); }
+}
+
+/* Couple illustration — gentle float */
+.couple-float {
+  display: block;
+  width: 100%;
+  animation: couple-float 4.5s ease-in-out infinite;
+}
+@keyframes couple-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+
+/* Hero couple-illustration wrapper — the full invite centrepiece */
+.hero-couple-illo {
+  width: 100%;
+  max-width: 320px;
+  margin: var(--space-3) auto var(--space-3);
+  position: relative;
+  z-index: 1;
+}
+.hero-couple-illo img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ============================================
+   Runaway cat
+   ============================================ */
+.cat-runaway {
+  transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
+  cursor: pointer;
+  will-change: transform;
+  display: inline-block;
+}
+.cat-runaway img { pointer-events: none; }
+
+/* Startled tooltip — shows when cursor is near (desktop) or after tap (mobile) */
+.cat-tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translate(-50%, 8px);
+  padding: 4px 12px;
+  background: var(--white);
+  border: 2.5px solid var(--blue);
+  border-radius: 16px;
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  color: var(--blue);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms var(--ease-soft),
+              transform 220ms var(--ease-bounce);
+  box-shadow: 0 3px 0 var(--blue);
+  z-index: 10;
+}
+.cat-runaway.is-startled .cat-tooltip {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 800ms var(--ease-out),
+              transform 800ms var(--ease-out);
+}
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 120ms; }
+.reveal-delay-2 { transition-delay: 240ms; }
+.reveal-delay-3 { transition-delay: 360ms; }
+
+/* ============================================
+   Accessibility — reduced motion
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+}
+
+/* ============================================
+   Responsive tweaks
+   ============================================ */
+@media (max-width: 600px) {
+  .hero-pills { flex-direction: column; gap: var(--space-2); }
+  .hero-pill-left, .hero-pill-right { transform: none; }
+  .hero-names { font-size: 1.75rem; }
+  .schedule-row { grid-template-columns: 72px 1fr; }
+  .btn { padding: 0.875rem 1.75rem; font-size: 1rem; }
+}
