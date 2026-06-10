@@ -46,6 +46,15 @@
     <h1 class="fade-in" style="--delay: 200ms">The Plan</h1>
   </header>
 
+  <!-- Cat zone — between The Plan title and the schedule split.
+       Centred, can scoot ±70px without clipping anything around it. -->
+  <div class="cat-zone">
+    <span class="cat-runaway" data-cat-runaway tabindex="0">
+      <span class="cat-tooltip" data-cat-tooltip aria-hidden="true">?!?</span>
+      <img src="img/cat.svg" alt="A cat — tap or hover to make it scoot" />
+    </span>
+  </div>
+
   <section class="section section-tight">
     <div class="container">
       <div class="split reveal">
@@ -86,14 +95,6 @@
             </div>
           </div>
 
-          <!-- Cat sneaks into the bottom-right corner — runs away from the cursor on desktop,
-               toggles left/right on each mobile tap. -->
-          <span class="cat-runaway" data-cat-runaway tabindex="0"
-                style="position: absolute; bottom: 18px; right: 18px; width: 80px;">
-            <span class="cat-tooltip" data-cat-tooltip aria-hidden="true">?!?</span>
-            <img src="img/cat.svg" alt="A cat — tap or hover to make it scoot"
-                 style="width: 100%; height: auto; display: block;" />
-          </span>
         </div>
 
         <!-- ===== RIGHT: Location ===== -->
@@ -134,9 +135,9 @@
 
       </div>
 
-      <!-- Map CTAs (optional, you can wire real maps URLs in later) -->
+      <!-- Map CTAs -->
       <div class="map-cta">
-        <a href="https://www.google.com/maps/search/Ground+Eatery+Bandar+Puteri+Puchong" target="_blank" rel="noopener" class="btn btn-outline" style="margin-right: 12px;">Ground Eatery →</a>
+        <a href="https://www.google.com/maps/search/Ground+Eatery+Bandar+Puteri+Puchong" target="_blank" rel="noopener" class="btn btn-outline">Ground Eatery →</a>
         <a href="https://www.google.com/maps/search/Ichigo+e-Yakiniku+Bandar+Puteri+Puchong" target="_blank" rel="noopener" class="btn btn-outline">Ichigo e-Yakiniku →</a>
       </div>
     </div>

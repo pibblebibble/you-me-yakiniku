@@ -495,10 +495,13 @@ p:last-child { margin-bottom: 0; }
   line-height: 1.4;
 }
 
-/* Map link button */
+/* Map link button row — flex so buttons stack with gap on mobile */
 .map-cta {
   margin-top: var(--space-5);
-  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3);
 }
 
 /* RSVP page title — smaller + balanced wrap so "Agenda?" doesn't orphan */
@@ -832,12 +835,12 @@ body { position: relative; }
   z-index: 1;
 }
 
-/* Hide some doodles on small screens so they don't crowd the form */
+/* Generalised mobile/tablet hide — works on ANY element, not just .page-doodle */
 @media (max-width: 720px) {
-  .page-doodle.hide-on-mobile { display: none; }
+  .hide-on-mobile { display: none !important; }
 }
 @media (max-width: 1080px) {
-  .page-doodle.hide-on-tablet { display: none; }
+  .hide-on-tablet { display: none !important; }
 }
 /* Goose stays above the footer's blue line */
 .page-doodle.goose-peek { z-index: 3; }
@@ -910,13 +913,34 @@ body { position: relative; }
 /* ============================================
    Runaway cat
    ============================================ */
-.cat-runaway {
-  transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
-  cursor: pointer;
-  will-change: transform;
-  display: inline-block;
+/* Centred zone between the page title and the next section — gives the cat
+   space to scoot left or right with nothing to clip into. */
+.cat-zone {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-3) var(--space-4) var(--space-4);
+  position: relative;
+  z-index: 3;
 }
-.cat-runaway img { pointer-events: none; }
+.cat-runaway {
+  position: relative;
+  display: inline-block;
+  width: 80px;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+.cat-runaway img {
+  width: 100%;
+  height: auto;
+  display: block;
+  pointer-events: none;
+}
+@media (max-width: 600px) {
+  .cat-runaway { width: 64px; }
+}
 
 /* Startled tooltip — shows when cursor is near (desktop) or after tap (mobile) */
 .cat-tooltip {

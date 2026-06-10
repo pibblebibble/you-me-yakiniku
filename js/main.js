@@ -268,9 +268,11 @@
     var hasFineHover = matchMedia('(hover: hover) and (pointer: fine)').matches;
 
     if (hasFineHover) {
-      var THRESHOLD = 200;
-      var MAX_X = 120;
-      var MAX_Y = 70;
+      var THRESHOLD = 180;
+      // Tighter caps so the cat stays inside its panel (never disappears behind
+      // the adjacent Location panel).
+      var MAX_X = 70;
+      var MAX_Y = 50;
       var ticking = false;
       var lastX = 0, lastY = 0;
       var wasStartled = false;
@@ -327,12 +329,14 @@
       });
 
     } else {
+      // Touch: shorter scoot so the cat stays inside the panel on narrow phones.
       var step = 0;
+      var TAP_DIST = 55;  // px each side
       cat.addEventListener('click', function (e) {
         e.stopPropagation();
         if (step === 0) step = 1;
         else step = -step;
-        cat.style.transform = 'translateX(' + (step * 90) + 'px)';
+        cat.style.transform = 'translateX(' + (step * TAP_DIST) + 'px)';
         startle();
       });
       document.addEventListener('click', function (e) {
