@@ -48,9 +48,12 @@
 
     <div class="thanks-inner">
 
-      <!-- Goose king celebrates your RSVP -->
-      <div class="fade-in wiggle" style="--delay: 200ms; max-width: 180px; margin: 0 auto var(--space-4);">
-        <img src="img/goose-king.png" alt="" style="width: 100%; height: auto; display: block;" />
+      <!-- Goose king celebrates your RSVP. Wiggle on inner so it doesn't
+           override the fade-in's forward fill. -->
+      <div class="fade-in" style="--delay: 200ms; max-width: 180px; margin: 0 auto var(--space-4);">
+        <div class="wiggle">
+          <img src="img/goose-king.png" alt="" style="width: 100%; height: auto; display: block;" />
+        </div>
       </div>
 
       <p class="eyebrow fade-in" style="--delay: 400ms">Your RSVP is locked in</p>

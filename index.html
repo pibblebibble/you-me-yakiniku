@@ -61,11 +61,15 @@
         <span class="pill hero-pill-right pop-in" style="--delay: 350ms; --rot: 3deg;">Saturday 4pm</span>
       </div>
 
-      <!-- Bride + groom illustration — your full invite card centrepiece
-           (already includes the "You're invited" heart text inside) -->
-      <div class="hero-couple-illo fade-in wiggle" style="--delay: 500ms;">
-        <div class="couple-float">
-          <img src="img/bride-groom.svg" alt="You're invited to our wedding — Jon and Viv" />
+      <!-- Bride + groom illustration — your full invite card centrepiece.
+           Layers: outer fade-in (entrance) > wiggle (hover effect) > couple-float
+           (continuous gentle float). Each animation lives on its own element so
+           they don't override each other. -->
+      <div class="hero-couple-illo fade-in" style="--delay: 500ms;">
+        <div class="wiggle">
+          <div class="couple-float">
+            <img src="img/bride-groom.svg" alt="You're invited to our wedding — Jon and Viv" />
+          </div>
         </div>
       </div>
 

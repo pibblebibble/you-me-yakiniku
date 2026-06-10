@@ -252,17 +252,30 @@
     var prefersReduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReduced) return;
 
-    var STARTLES = ['?!?', '!!!', '🥺', 'nooo', '😾', 'meow?!'];
+    var STARTLES = ['?!?', '!!!', '🥺', 'nooo', '😾', 'meow?!', 'STOPPP', '>:(', '😿', 'help', 'rude'];
     var tooltipEl = cat.querySelector('[data-cat-tooltip]');
+    var rotateTimer = null;
+
     function pickStartle() {
-      return STARTLES[Math.floor(Math.random() * STARTLES.length)];
+      // Avoid picking the same text twice in a row — feels more alive
+      var current = tooltipEl ? tooltipEl.textContent : '';
+      var pick;
+      do { pick = STARTLES[Math.floor(Math.random() * STARTLES.length)]; }
+      while (pick === current && STARTLES.length > 1);
+      return pick;
     }
     function startle() {
       if (tooltipEl) tooltipEl.textContent = pickStartle();
       cat.classList.add('is-startled');
+      // Keep rotating the text while user keeps the cat startled
+      clearInterval(rotateTimer);
+      rotateTimer = setInterval(function () {
+        if (tooltipEl) tooltipEl.textContent = pickStartle();
+      }, 1100);
     }
     function calm() {
       cat.classList.remove('is-startled');
+      clearInterval(rotateTimer);
     }
 
     var hasFineHover = matchMedia('(hover: hover) and (pointer: fine)').matches;
